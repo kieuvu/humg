@@ -8,10 +8,10 @@ class District {
 
   factory District.fromMap(Map<String, dynamic> map) {
     return District(
-      id: map['id'],
-      provinceId: int.parse(map['provinceId']),
+      id: int.parse(map['id']),
       name: map['name'],
       level: map['level'],
+      provinceId: int.parse(map['provinceId']),
     );
   }
 }

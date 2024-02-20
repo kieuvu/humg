@@ -7,7 +7,7 @@ class Province {
 
   factory Province.fromMap(Map<String, dynamic> map) {
     return Province(
-      id: int.parse(map['id']),
+      id: int.parse(map["id"]),
       name: map['name'],
       level: map['level'],
     );

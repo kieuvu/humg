@@ -1,7 +1,7 @@
 class Ward {
   int id;
   String name;
-  int level;
+  String level;
   int districtId;
   int provinceId;
 
@@ -10,10 +10,10 @@ class Ward {
   factory Ward.fromMap(Map<String, dynamic> map) {
     return Ward(
       id: int.parse(map['id']),
-      districtId: int.parse(map['districtId']),
-      provinceId: int.parse(map['provinceId']),
       name: map['name'],
       level: map['level'],
+      districtId: int.parse(map['districtId']),
+      provinceId: int.parse(map['provinceId']),
     );
   }
 }
