@@ -72,70 +72,80 @@ class _ExploreState extends State<Explore> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
-            Text(getCurrentDateTime()),
-            const Text(
-              "Explore",
-              style: TextStyle(fontSize: 30),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: _keywordController,
-              onEditingComplete: () {
-                _updateKeyword();
-              },
-              decoration: const InputDecoration(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                getCurrentDateTime(),
+              ),
+              const Text(
+                "Explore",
+                style: TextStyle(fontSize: 30),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: _keywordController,
+                onEditingComplete: () {
+                  _updateKeyword();
+                },
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(5),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
                     borderSide: BorderSide(width: 2, color: Colors.black),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
                     borderSide: BorderSide(width: 2, color: Colors.black),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
                     borderSide: BorderSide(width: 2, color: Colors.black),
                   ),
                   hintText: "Search for articles",
-                  prefixIcon: Icon(Icons.search)),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            FutureBuilder(
-              future: postsFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.white,
-                      color: Colors.black,
-                    ),
-                  );
-                } else if (snapshot.hasData) {
-                  final posts = snapshot.data!;
-                  return buildPosts(posts);
-                } else {
-                  return const Center(
-                    child: Text("No data available"),
-                  );
-                }
-              },
-            )
-          ],
+                  prefixIcon: Icon(Icons.search),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              FutureBuilder(
+                future: postsFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.white,
+                        color: Colors.black,
+                      ),
+                    );
+                  } else if (snapshot.hasData) {
+                    final posts = snapshot.data!;
+                    return buildPosts(posts);
+                  } else {
+                    return const Center(
+                      child: Text("No data available"),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 
@@ -165,11 +175,12 @@ class _ExploreState extends State<Explore> {
               child: Row(
                 children: [
                   Expanded(
-                      flex: 1,
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: NetworkImage(post.urlToImage),
-                      )),
+                    flex: 1,
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(post.urlToImage),
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     flex: 3,
